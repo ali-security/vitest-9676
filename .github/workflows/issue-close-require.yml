@@ -1,12 +1,10 @@
 name: Issue Close Require
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
-
+  workflow_dispatch:
 jobs:
   close-issues:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: needs reproduction
         uses: actions-cool/issues-helper@v3

@@ -3,7 +3,7 @@ name: Publish Package
 on:
   push:
     tags:
-      - 'v*'
+      - v*
 
 permissions:
   contents: write
@@ -12,7 +12,7 @@ permissions:
 jobs:
   publish:
     if: github.repository == 'vitest-dev/vitest'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment: Release
     steps:
       - uses: actions/checkout@v4

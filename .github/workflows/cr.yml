@@ -2,7 +2,7 @@ name: CR
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
     types: [opened, synchronize, labeled]
 
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   release:
     if: github.repository == 'vitest-dev/vitest' && (github.ref == 'refs/heads/main' || contains(github.event.pull_request.labels.*.name, 'cr-tracked'))
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: 'Release: pkg.pr.new'
 
     steps:

@@ -9,10 +9,12 @@ on:
     branches:
       - main
 
+      - master
   pull_request:
     branches:
       - main
 
+      - master
   workflow_dispatch:
 
 concurrency:
@@ -25,8 +27,8 @@ env:
 jobs:
   lint:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
-    name: 'Lint: node-latest, ubuntu-latest'
+    runs-on: ubuntu-24.04
+    name: 'Lint: node-latest, ubuntu-24.04'
     steps:
       - uses: actions/checkout@v4
 
@@ -55,8 +57,8 @@ jobs:
           ./actionlint -color -shellcheck=""
 
   changed:
-    runs-on: ubuntu-latest
-    name: 'Diff: node-latest, ubuntu-latest'
+    runs-on: ubuntu-24.04
+    name: 'Diff: node-latest, ubuntu-24.04'
     outputs:
       should_skip: false # seal: always run tests (changed-files gate misfires on our CI fork)
 
@@ -83,12 +85,12 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-24.04]
         node_version: [18, 20, 22]
         include:
-          - os: macos-latest
+          - os: macos-14
             node_version: 20
-          - os: windows-latest
+          - os: windows-2022
             node_version: 20
       fail-fast: false
 
@@ -128,8 +130,8 @@ jobs:
     strategy:
       matrix:
         os:
-          - macos-latest
-          - windows-latest
+          - macos-14
+          - windows-2022
       fail-fast: false
 
     timeout-minutes: 30
