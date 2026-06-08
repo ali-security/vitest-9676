@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     name: 'Diff: node-latest, ubuntu-latest'
     outputs:
-      should_skip: ${{ steps.changed-files.outputs.only_changed == 'true' }}
+      should_skip: false # seal: always run tests (changed-files gate misfires on our CI fork)
 
     steps:
       - uses: actions/checkout@v4
